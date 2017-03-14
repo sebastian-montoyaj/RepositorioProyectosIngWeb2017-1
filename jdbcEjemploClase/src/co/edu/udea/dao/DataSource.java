@@ -12,8 +12,11 @@ import co.edu.udea.Exception.Excepcion;
  */
 public class DataSource
 {
+	// Creamos nuestro dato
+	private static Connection singletonCon;
+	
 	// Metodo que establece la conexion con la BD
-	public static Connection getConnection() throws Excepcion
+	private static Connection getConnection() throws Excepcion
 	{
 		// Se crea e inicializa nula la variable necesaria para la conexion
 		Connection con = null;
@@ -36,4 +39,15 @@ public class DataSource
 		
 		return con; // Y se retorna la variable de conexion
 	}
+	
+	public static Connection getSingletonConnection() throws Excepcion
+	{
+		if (singletonCon == null)
+		{
+			singletonCon = DataSource.getConnection();
+		}
+		
+		return singletonCon;
+	}
+	
 }

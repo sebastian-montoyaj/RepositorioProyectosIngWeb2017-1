@@ -28,7 +28,7 @@ public class CiudadDAOImp implements CiudadDAO
 		
 		try
 		{
-			con = DataSource.getConnection(); // Llamo a la funcion que me realiza la conexion con la BD
+			con = DataSource.getSingletonConnection(); // Llamo a la funcion que me realiza la conexion con la BD
 			ps = con.prepareStatement("select * from ciudades;"); // Luego, se construye la consulta
 			rs = ps.executeQuery(); // Y realizamos la consulta de las ciudades
 			
@@ -96,7 +96,7 @@ public class CiudadDAOImp implements CiudadDAO
 		try
 		{
 			// Luego armo la consulta y la ejecuto
-			con = DataSource.getConnection();
+			con = DataSource.getSingletonConnection();
 			ps = con.prepareStatement("select * from ciudades where codigo = ?;");
 			ps.setLong(1, codigo);
 			rs = ps.executeQuery();
