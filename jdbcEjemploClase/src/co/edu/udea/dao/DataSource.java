@@ -15,7 +15,7 @@ public class DataSource
 	// Metodo que establece la conexion con la BD
 	public static Connection getConnection() throws Excepcion
 	{
-		// Se crea e inicializa la variable necesaria para la conexion
+		// Se crea e inicializa nula la variable necesaria para la conexion
 		Connection con = null;
 		
 		// A contuinuacion, se intenta...

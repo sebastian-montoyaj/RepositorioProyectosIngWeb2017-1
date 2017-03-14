@@ -14,4 +14,7 @@ public interface CiudadDAO
 {
 	// Se plantea el metodo abstracto para obtener las ciudades
 	public List<Ciudad> obtener() throws Excepcion;
+	
+	// Se plantea un metodo que me retorna la ciudad especifica dada su clave primaria
+	public Ciudad obtener(Long codigo) throws Excepcion;
 }

@@ -15,7 +15,11 @@ public class MotrarDatos
 {
 	public static void main(String[] args)
 	{
-		consultarCiudades(); // Se llama el metodo que realiza la consulta a la BD
+		//consultarCiudades(); // Se llama el metodo que realiza la consulta a la BD
+		
+		
+		
+		
 	}
 	
 	// Metodo para realizar la consulta de las ciudades en la base de datos

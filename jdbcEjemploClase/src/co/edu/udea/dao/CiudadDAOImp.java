@@ -83,5 +83,68 @@ public class CiudadDAOImp implements CiudadDAO
 		// Por ultimo, retornamos en una lista las ciudadaes que consultamos
 		return lista;
 	}
-
+	
+	@Override
+	public Ciudad obtener(Long codigo) throws Excepcion
+	{
+		// Creamos las variables necesarias para la consulta y las inicializo en nulo (nulo porque si hay un error entonces retorno nulo)
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Ciudad ciudad = null;
+		
+		try
+		{
+			// Luego armo la consulta y la ejecuto
+			con = DataSource.getConnection();
+			ps = con.prepareStatement("select * from ciudades where codigo = ?;");
+			ps.setLong(1, codigo);
+			rs = ps.executeQuery();
+			
+			// Si puedo leer el primer y unico elemento entonces
+			if (rs.next())
+			{
+				// Cargo mi variable ciudad con la informacion obtenida de la consulta
+				ciudad = new Ciudad();
+				ciudad.setCodigo(rs.getLong("codigo"));
+				ciudad.setNombre(rs.getString("Nombre"));
+				ciudad.setCodigoArea(rs.getString("codigoArea"));
+			}
+		}
+		// En caso de error consultado, lanzo la excepcion apropiada
+		catch (SQLException e)
+		{
+			throw new Excepcion("Error consultando", e);
+		}
+		// Finalmente, cerramos todas la conexiones abiertas y que ya no usaremos
+		finally
+		{
+			try
+			{
+				// NOTA: Se cierran las conexiones en el orden inverso que las creamos
+				if (rs != null)
+				{
+					rs.close();
+				}
+				
+				if (ps != null)
+				{
+					ps.close();
+				}
+				
+				if (con != null)
+				{
+					con.close();
+				}
+			}
+			// En caso de error, cerrando lanzamos tambien la excepcion apropiada
+			catch (SQLException e)
+			{
+				throw new Excepcion("Error cerrando", e);
+			}
+		}
+		
+		// Por ultimo, retornamos la ciudad que se logro consultar (o nulo en su defecto)
+		return ciudad;
+	}
 }
