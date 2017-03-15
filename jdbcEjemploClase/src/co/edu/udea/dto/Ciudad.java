@@ -1,7 +1,8 @@
 /* POJO para la tabla ciudad */
 package co.edu.udea.dto;
 
-/* @author = SebastiÃ¡n Montoya JimÃ©nez
+/*
+ * @author = Sebastián Montoya Jiménez
  */
 public class Ciudad
 {

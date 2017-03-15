@@ -9,15 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /*
- * @author = SebastiÃ¡n Montoya JimÃ©nez
+ * @author = Sebastián Montoya Jiménez
  */
 public class MotrarDatos
 {
 	public static void main(String[] args)
 	{
-		//consultarCiudades(); // Se llama el metodo que realiza la consulta a la BD
-		
-		
+		consultarCiudades(); // Se llama el metodo que realiza la consulta a la BD (Esta es la forma sin aplicar patrones de diseño)
 		
 		
 	}
@@ -30,11 +28,11 @@ public class MotrarDatos
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
-		// A contuinuacion, se intenta...
+		// A continuacion, se intenta...
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver"); // Cargar el driver de conexion con MYSQL
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sebasBD","root","root"); // Crear y abrir la conexion con la base de datos que queremos
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sebasBD","root",""); // Crear y abrir la conexion con la base de datos que queremos
 			ps = con.prepareStatement("select * from ciudades;"); // Luego, se construye la consulta
 			rs = ps.executeQuery(); // Y realizamos la consulta de las ciudades
 			
@@ -54,7 +52,7 @@ public class MotrarDatos
 		{
 			e.printStackTrace();
 		}
-		// Finalmente, se cierran las conexiones en el orden inverso que las creamos
+		// Finalmente, se cierran las conexiones en el orden inverso en el que las creamos
 		finally
 		{
 			try
@@ -63,7 +61,7 @@ public class MotrarDatos
 				ps.close();
 				con.close();
 			}
-			// En caso de cualquier otro error se recoge y se imprime
+			// En caso de cualquier otro error se recoge y se imprime dicho error
 			catch (SQLException e) 
 			{
 				e.printStackTrace();

@@ -12,20 +12,21 @@ import co.edu.udea.Exception.Excepcion;
 import co.edu.udea.dto.Ciudad;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class CiudadDAOImp implements CiudadDAO
 {
-	// Implementacion de los metodos abstractos
+	// Implementacion del metodo que me obtiene todas las ciudades
 	@Override
 	public List<Ciudad> obtener() throws Excepcion
 	{
-		// Variables para realizar la consulta a la BD sobre las ciudades
+		// Variables para realizar la consulta a la BD sobre la tabla de las ciudades
 		PreparedStatement ps = null;
 		Connection con = null;
 		ResultSet rs = null;
 		List<Ciudad> lista = new  ArrayList<Ciudad>();
 		
+		// A continuacion...
 		try
 		{
 			con = DataSource.getSingletonConnection(); // Llamo a la funcion que me realiza la conexion con la BD
@@ -43,7 +44,7 @@ public class CiudadDAOImp implements CiudadDAO
 				ciudad.setNombre(rs.getString("Nombre"));
 				ciudad.setCodigoArea(rs.getString("codigoArea"));
 				
-				// Agrego el objeto ciudad a la lista correspondiente
+				// Y agrego el objeto ciudad a la lista correspondiente
 				lista.add(ciudad);
 			}
 		}
@@ -84,27 +85,31 @@ public class CiudadDAOImp implements CiudadDAO
 		return lista;
 	}
 	
+	// Implementacion del metodo que me obtiene la ciudad con el codigo especificado en los parametros
 	@Override
 	public Ciudad obtener(Long codigo) throws Excepcion
 	{
-		// Creamos las variables necesarias para la consulta y las inicializo en nulo (nulo porque si hay un error entonces retorno nulo)
+		// Primero, creamos las variables necesarias para la consulta y las inicializo en nulo (nulo porque si hay un error entonces al menos retorno nulo)
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		Ciudad ciudad = null;
 		
+		// A continuacion...
 		try
 		{
-			// Luego armo la consulta y la ejecuto
+			// Armo la consulta y la ejecuto. 
+			// NOTA: Para evitar SQLInjection, en la creacion de la consulta no se concatena la variable codigo con la instruccion SQL
+			//       sino que mas bien que se usa el caracter '?' y con el metodo set__ de PreparedStatement reemplazo dicho caracter por el codigo.
 			con = DataSource.getSingletonConnection();
-			ps = con.prepareStatement("select * from ciudades where codigo = ?;");
+			ps = con.prepareStatement("select * from ciudades where codigo = ?;"); 
 			ps.setLong(1, codigo);
 			rs = ps.executeQuery();
 			
-			// Si puedo leer el primer y unico elemento entonces
+			// Despues, si puedo leer el primer y unico elemento de la consulta entonces
 			if (rs.next())
 			{
-				// Cargo mi variable ciudad con la informacion obtenida de la consulta
+				// Inicializo mi variable ciudad con la informacion obtenida de la consulta
 				ciudad = new Ciudad();
 				ciudad.setCodigo(rs.getLong("codigo"));
 				ciudad.setNombre(rs.getString("Nombre"));

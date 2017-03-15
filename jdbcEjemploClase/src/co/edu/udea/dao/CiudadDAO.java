@@ -8,11 +8,11 @@ import co.edu.udea.dto.Ciudad;
 import java.util.List;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public interface CiudadDAO
 {
-	// Se plantea el metodo abstracto para obtener las ciudades
+	// Se plantea el metodo abstracto para obtener todas las ciudades
 	public List<Ciudad> obtener() throws Excepcion;
 	
 	// Se plantea un metodo que me retorna la ciudad especifica dada su clave primaria

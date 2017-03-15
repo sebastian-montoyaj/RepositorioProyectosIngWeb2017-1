@@ -2,7 +2,7 @@
 package co.edu.udea.Exception;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class Excepcion extends Exception
 {

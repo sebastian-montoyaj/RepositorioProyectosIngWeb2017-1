@@ -9,7 +9,7 @@ import co.edu.udea.Exception.Excepcion;
 import co.edu.udea.dto.Ciudad;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class CiudadDAOImpTest 
 {
@@ -17,13 +17,14 @@ public class CiudadDAOImpTest
 	@Test
 	public void testObtener()
 	{
-		// Siempre declaro los objetos usando la interfaz creada paar ello
+		// En primer lugar, creo las variables para la prueba.
+		// NOTA: Siempre declaro los objetos usando la INTERFAZ creada para ello
 		CiudadDAO ciudadDAO = null;
 		List<Ciudad> lista = null;
 		
 		try
 		{
-			// E inicializo dichos objetos con la implementacion de tal interfaz (Es una buena practica de programacion)
+			// Luego, inicializo dichos objetos con la implementacion de tal interfaz (Es una buena practica de programacion)
 			ciudadDAO = new CiudadDAOImp();
 			lista = ciudadDAO.obtener();
 			// Se considerara correcto el metodo si hay por lo menos un elemento 
@@ -38,7 +39,7 @@ public class CiudadDAOImpTest
 	
 	// Prueba para verificar que el metodo de obtener una ciudad dada su clave si este correcto
 	@Test
-	public void testObtener2()
+	public void testObtenerPorCodigo()
 	{
 		// Nuevamente, creo los objetos para la prueba
 		CiudadDAO ciudadDAO = null;
@@ -49,7 +50,7 @@ public class CiudadDAOImpTest
 			// E inicializo dichos objetos
 			ciudadDAO = new CiudadDAOImp();
 			ciudad = ciudadDAO.obtener(1L);
-			// Se considerara correcto el metodo retorna algo diferente de nulo
+			// Se considerara correcto el metodo si se retorna algo diferente de nulo
 			assertTrue(ciudad != null);
 		}
 		catch(Excepcion e)
