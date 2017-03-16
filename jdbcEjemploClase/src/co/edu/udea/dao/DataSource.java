@@ -1,4 +1,4 @@
-/* Clase que entrega una conexion activa con la BD y que aplica el patron de diseño singleton*/
+/* Clase que entrega una conexion activa con la BD y que aplica el patron de diseï¿½o singleton*/
 package co.edu.udea.dao;
 
 //Importes necesarios para que esta clase funcione
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import co.edu.udea.Exception.Excepcion;
 
 /*
- * @author = Sebastián Montoya Jiménez
+ * @author = Sebastiï¿½n Montoya Jimï¿½nez
  */
 public class DataSource
 {
@@ -22,7 +22,7 @@ public class DataSource
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver"); // Cargar el driver de conexion con MYSQL
-			singletonCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/sebasBD","root",""); // Crear y abrir la conexion con la base de datos que queremos
+			singletonCon = DriverManager.getConnection("jdbc:mysql://localhost:3306/sebasBD","root","root"); // Crear y abrir la conexion con la base de datos que queremos
 		}
 		// En caso de error se recogen las excepciones
 		catch(ClassNotFoundException e)

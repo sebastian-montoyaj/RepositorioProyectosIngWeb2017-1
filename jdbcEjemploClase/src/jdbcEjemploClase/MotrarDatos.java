@@ -9,13 +9,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /*
- * @author = Sebastián Montoya Jiménez
+ * @author = Sebastiï¿½n Montoya Jimï¿½nez
  */
 public class MotrarDatos
 {
 	public static void main(String[] args)
 	{
-		consultarCiudades(); // Se llama el metodo que realiza la consulta a la BD (Esta es la forma sin aplicar patrones de diseño)
+		consultarCiudades(); // Se llama el metodo que realiza la consulta a la BD (Esta es la forma sin aplicar patrones de diseï¿½o)
 		
 		
 	}
@@ -32,7 +32,7 @@ public class MotrarDatos
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver"); // Cargar el driver de conexion con MYSQL
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sebasBD","root",""); // Crear y abrir la conexion con la base de datos que queremos
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/sebasBD","root","root"); // Crear y abrir la conexion con la base de datos que queremos
 			ps = con.prepareStatement("select * from ciudades;"); // Luego, se construye la consulta
 			rs = ps.executeQuery(); // Y realizamos la consulta de las ciudades
 			
