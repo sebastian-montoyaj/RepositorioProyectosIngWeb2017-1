@@ -14,34 +14,36 @@ import co.edu.udea.Excepcion.Excepcion;
 public class DataSource
 {
 	// Creamos las variables necesarias para construir una conexion a la BD con Hibernate
+	private static DataSource instancia;
 	private SessionFactory factory = null;
 	private Configuration conf = new Configuration();
-	
-	// Metodo con el cual se obtiene
-	public Session getSession() throws Excepcion
-	{
-		try
-		{
-			if (factory == null)
-			{
-				conf.configure("co/edu/udea/config/hibernateConfig.cfg.xml");
-				factory = conf.buildSessionFactory();
-			}
-			
-			return factory.openSession(); // Al final retorno una sesion abierta de la base de datos
-		}
-		catch (HibernateException e)
-		{
-			throw new Excepcion("Error configurando la sesion", e);
-		}
-	}
-	
-	/*
-	private static DataSource instancia;
 	
 	private DataSource()
 	{
 		
+	}
+	
+	// Metodo con el cual se obtiene o se crea la conexion a la base dew datos
+	public Session getSession() throws Excepcion
+	{
+		try
+		{
+			// De este modo, si el objeto conexion no se ha creado entonces
+			if (factory == null)
+			{
+				// De acuerdo al archivo de aconfiguracion
+				conf.configure("co/edu/udea/config/hibernateConfig.cfg.xml");
+				// Se procede a crear la sesion
+				factory = conf.buildSessionFactory();
+			}
+		}
+		catch (HibernateException e)
+		{
+			e.printStackTrace();
+			throw new Excepcion("Error configurando la sesion", e);
+		}
+		
+		return factory.openSession(); // Al final retorno una sesion abierta de la base de datos
 	}
 	
 	public static DataSource getInstance()
@@ -52,5 +54,5 @@ public class DataSource
 		}
 		
 		return instancia;
-	}*/
+	}
 }

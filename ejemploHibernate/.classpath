@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="/export/estudiantes/sebastian.montoyaj/LibreriasHibernate/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="/export/estudiantes/sebastian.montoyaj/LibreriasHibernate/slf4j-api-1.6.1.jar"/>
 	<classpathentry kind="lib" path="/export/estudiantes/sebastian.montoyaj/LibreriasHibernate/slf4j-log4j12-1.7.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

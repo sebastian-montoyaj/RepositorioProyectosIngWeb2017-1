@@ -9,9 +9,11 @@
     	<property name="connection.url">jdbc:mysql://localhost:3306/sebasBD</property>
     	<property name="connection.username">root</property>
     	<property name="connection.password">root</property>
-    	<!-- La propiedad dialect nos permite incarle al framework bajo que lenguaje de BD vamos a hablar -->
+    	<!-- La propiedad dialect nos permite indicarle al framework bajo que lenguaje de BD vamos a hablarle -->
     	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
     	<!-- Esta propiedad nos permite ver los mensajes sql por consola -->
     	<property name="show_sql">true</property>
+    	<!-- Se define una etiqueta mapping por cada archivo de mapeo -->
+    	<mapping resource="co/edu/udea/dto/Ciudad.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
