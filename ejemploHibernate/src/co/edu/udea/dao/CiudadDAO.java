@@ -1,5 +1,4 @@
 /*Interfaz que define el dao de ciudad*/
-
 package co.edu.udea.dao;
 
 // Importes necesarios

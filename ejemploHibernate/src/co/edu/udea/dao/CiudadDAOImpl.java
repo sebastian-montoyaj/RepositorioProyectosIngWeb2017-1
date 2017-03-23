@@ -29,7 +29,7 @@ public class CiudadDAOImpl implements CiudadDAO
 		
 		try
 		{
-			// Se inicia la sesion
+			// Se inicia(Obtiene) la sesion
 			session = DataSource.getInstance().getSession();
 			Criteria criteria = session.createCriteria(Ciudad.class); // Se crea un criterio en donde traeremos todas las ciudades
 			lista = criteria.list(); // Luego llevamos todas las ciudades a una lista

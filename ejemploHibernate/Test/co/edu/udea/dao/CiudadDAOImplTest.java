@@ -21,7 +21,7 @@ public class CiudadDAOImplTest
 	@Test
 	public void testObtener()
 	{
-		// Siempre declaro los objetos usando la interfaz creada paar ello
+		// Siempre declaro los objetos usando la interfaz creada para ello
 		CiudadDAO ciudadDAO = null;
 		List<Ciudad> lista = null;
 		
