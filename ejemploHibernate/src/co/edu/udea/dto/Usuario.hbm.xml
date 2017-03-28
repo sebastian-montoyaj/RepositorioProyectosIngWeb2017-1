@@ -20,7 +20,7 @@
 <!--         <property name="roles" type="java.lang.String"> -->
 <!--             <column name="ROLES" length="12" not-null="true" /> -->
 <!--         </property> -->
-        <many-to-one class="co.edu.udea.dto.Roles" name="roles">
+        <many-to-one name="roles" class="co.edu.udea.dto.Roles" lazy="proxy" fetch="join">
         	<column name="ROL" not-null="true" />
         </many-to-one>
     </class>

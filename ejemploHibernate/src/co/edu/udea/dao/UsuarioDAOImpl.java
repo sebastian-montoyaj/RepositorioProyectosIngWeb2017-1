@@ -31,8 +31,15 @@ public class UsuarioDAOImpl implements UsuarioDAO
 		// En caso de error recuperamos la excepcion
 		catch (HibernateException e)
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 			throw new Excepcion("Error consultando usuario", e);
+		}
+		finally // Por ultimo
+		{
+			if(session != null) // Si la sesion esta abierta
+			{
+				session.close(); // La cierro
+			}
 		}
 		
 		return user; // Y retornamos el usuario que recuperamos de la BD
