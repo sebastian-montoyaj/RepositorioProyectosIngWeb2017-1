@@ -36,11 +36,11 @@
 <!--         </property> -->
         
         <property name="fechaModificacion" type="java.util.Date">
-            <column name="FECHAMODIFICACION" not-null="true" />
+            <column name="FECHAMODIFICACION" not-null="false" />
         </property>
         
         <property name="eliminado" type="java.lang.Boolean">
-            <column name="ELIMINADO" not-null="true" />
+            <column name="ELIMINADO" not-null="false" />
         </property>
         
 <!--         <property name="usuarioElimina" type="java.lang.String"> -->
@@ -48,20 +48,25 @@
 <!--         </property> -->
         
         <property name="fechaEliminacion" type="java.util.Date">
-            <column name="FECHAELIMINACION" not-null="true" />
+            <column name="FECHAELIMINACION" not-null="false" />
         </property>
         
         <many-to-one name="usuarioCrea" class="co.edu.udea.dto.Usuario" lazy="proxy" fetch="join">
-        	<column name="USUARIOCREA" not-null="true" />
+        	<column name="USUARIOCREA" not-null="false" />
         </many-to-one>
         
         <many-to-one name="usuarioModifica" class="co.edu.udea.dto.Usuario" lazy="proxy" fetch="join">
-        	<column name="USUARIOMODIFICA" not-null="true" />
+        	<column name="USUARIOMODIFICA" not-null="false" />
         </many-to-one>
         
         <many-to-one name="usuarioElimina" class="co.edu.udea.dto.Usuario" lazy="proxy" fetch="join">
-        	<column name="USUARIOELIMINA" not-null="true" />
+        	<column name="USUARIOELIMINA" not-null="false" />
         </many-to-one>
+        
+        <set name="direcciones">
+        	<key column="cedula"/>
+        	<one-to-many class="co.edu.udea.dto.Direccion"/>
+        </set>
         
     </class>
 </hibernate-mapping>

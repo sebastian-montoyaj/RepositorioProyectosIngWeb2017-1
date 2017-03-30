@@ -2,6 +2,7 @@
 package co.edu.udea.dto;
 
 import java.util.Date;
+import java.util.Set;
 
 /*
  * @author = Sebastián Montoya Jiménez
@@ -19,6 +20,8 @@ public class Cliente
 	private boolean eliminado;
 	private Usuario usuarioElimina;
 	private Date fechaEliminacion;
+	
+	Set<Direccion> direcciones;
 	
 	public String getCedula() {
 		return cedula;

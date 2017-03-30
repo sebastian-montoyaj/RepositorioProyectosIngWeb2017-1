@@ -56,7 +56,7 @@ public class ClienteDAOImpl implements ClienteDAO
 			session = DataSource.getInstance().getSession();
 			tx = session.beginTransaction();
 			
-			session.save(cliente);
+			session.saveOrUpdate(cliente);
 			
 			tx.commit();
 		}
