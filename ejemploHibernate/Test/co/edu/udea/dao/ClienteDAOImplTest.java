@@ -38,7 +38,7 @@ public class ClienteDAOImplTest
 		}
 		catch(Excepcion e)
 		{
-			//e.printStackTrace();
+			e.printStackTrace();
 			fail(e.getMessage());
 		}
 	}
