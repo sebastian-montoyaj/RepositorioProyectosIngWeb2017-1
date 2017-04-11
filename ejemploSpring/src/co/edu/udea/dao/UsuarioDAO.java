@@ -7,7 +7,7 @@ import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Usuario;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public interface UsuarioDAO
 {

@@ -81,7 +81,7 @@ public class CiudadDAOImp implements CiudadDAO
 			}
 		}
 		
-		// Por ultimo, retornamos en una lista las ciudadaes que consultamos
+		// Por ultimo, retornamos en una lista las ciudades que consultamos
 		return lista;
 	}
 	

@@ -4,16 +4,20 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-    	<!-- Propiedades necesarias para establecer la conexion -->
-    	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    	<property name="connection.url">jdbc:mysql://localhost:3306/sebasBD</property>
-    	<property name="connection.username">root</property>
-    	<property name="connection.password">root</property>
+    	
+    	<!-- Propiedades necesarias para establecer la conexion con la BD -->
+    	<property name="connection.driver_class">com.mysql.jdbc.Driver</property> <!-- 1) Driver de conexion -->
+    	<property name="connection.url">jdbc:mysql://localhost:3306/sebasBD</property> <!-- 2) Url de donde esta la BD -->
+    	<property name="connection.username">root</property> <!-- 3) Usuario -->
+    	<property name="connection.password"></property ><!-- 4) Contraseña -->
+    	
     	<!-- La propiedad dialect nos permite indicarle al framework bajo que lenguaje de BD vamos a hablarle -->
     	<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+    	
     	<!-- Esta propiedad nos permite ver los mensajes sql por consola -->
-    	<property name="show_sql">true</property>
-    	<!-- Se define una etiqueta mapping por cada archivo de mapeo -->
+    	<property name="show_sql">true</property> <!-- Esto se quita una vez el aplicativo entra a produccion -->
+    	
+    	<!-- Ahora, se define una etiqueta mapping por cada archivo de mapeo -->
     	<mapping resource="co/edu/udea/dto/Ciudad.hbm.xml"/>
     	<mapping resource="co/edu/udea/dto/Roles.hbm.xml"/>
     	<mapping resource="co/edu/udea/dto/Usuario.hbm.xml"/>

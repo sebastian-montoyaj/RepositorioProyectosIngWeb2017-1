@@ -3,8 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 16/03/2017 01:20:52 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
+	<!-- Mapeo de la tabla direcciones -->
+	<!-- Misma explicacion de los mapeos de Ciudad y cliente -->
     <class name="co.edu.udea.dto.Direccion" table="direcciones">
-    
+    	
         <composite-id name="id" class="co.edu.udea.dto.Direccion_ID">
         	<key-property name="codigo" type="java.lang.Long">
         		<column name="CODIGO" />

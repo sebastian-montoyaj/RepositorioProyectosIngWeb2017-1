@@ -6,11 +6,13 @@ import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Cliente;
 
 /* Interfaz que define el dao de cliente
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public interface ClienteDAO 
 {
+	// Se plantea el metodo abstracto para obtener todos los clientes
 	public List<Cliente> obtener() throws Excepcion;
 	
+	// Se plantea un metodo que me permite registrar un cliente en la BD
 	public void guardar(Cliente cliente) throws Excepcion;
 }

@@ -4,18 +4,15 @@ package co.edu.udea.dao;
 //Importes necesarios para la clase
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
 import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Ciudad;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class CiudadDAOImpl implements CiudadDAO
 {
@@ -89,8 +86,6 @@ public class CiudadDAOImpl implements CiudadDAO
 	
 	public void guardar(Ciudad ciudad) throws Excepcion
 	{
-		// Variable de tipo transaccion para poder realizar la inserccion
-// En spring no es necesario //		Transaction tx = null;
 		// Variable con la que se establecera la conexion con la BD
 		Session session = null;
 		
@@ -98,9 +93,8 @@ public class CiudadDAOImpl implements CiudadDAO
 		{
 			// Se inicia la sesion
 			session = sessionFactory.getCurrentSession();
-// En spring no es necesario //			tx = session.beginTransaction(); // Se da ·πïor iniciada la transaccion
-			session.save(ciudad); // Se guarda la ciudad en la BD
-// En spring no es necesario //			tx.commit(); // Y se realiza la confirmacion de la transdaccion
+			// Se guarda la ciudad en la BD
+			session.saveOrUpdate(ciudad);
 		}
 		// En caso de error recuperamos la excepcion
 		catch (HibernateException e)

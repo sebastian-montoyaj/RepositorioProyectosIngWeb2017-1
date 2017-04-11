@@ -2,15 +2,16 @@
 package co.edu.udea.dto;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class Direccion
 {
-	Direccion_ID id;
-	private String direccion; // Clave compuesta
+	Direccion_ID id; // Clave compuesta
+	private String direccion;
 	private String telefono;
 	private long ciudad;
 	private boolean preferida;
+	
 	public Direccion_ID getId() {
 		return id;
 	}

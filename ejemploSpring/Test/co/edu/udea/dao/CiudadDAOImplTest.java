@@ -3,28 +3,25 @@ package co.edu.udea.dao;
 
 //Importes necesarios para la clase
 import static org.junit.Assert.*;
-
 import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Ciudad;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
-@RunWith(SpringJUnit4ClassRunner.class) // Le estamos dicuiendo al Junit que usara otro runner para las pruebas
+@RunWith(SpringJUnit4ClassRunner.class) // Con esto le estamos diciendo al Junit que se usara otro runner para las pruebas
 @Transactional // Con esto le indico que esta clase es transaccional
 @ContextConfiguration(locations = "classpath:co/edu/udea/config/SpringConf.xml") // Esto le dice a Spring donde esta el archivo de configuracion
 public class CiudadDAOImplTest
 {
-	@Autowired // Esta anotacion permite la inyeccion de datos desde la bd a esta variable
+	@Autowired // Esta anotacion permite la inyeccion de datos desde la BD a esta variable
 	CiudadDAO ciudadDAO;
 
 	// Prueba para verificar que el metodo de obtener todas las ciudades este trabajando correctamente
@@ -32,13 +29,11 @@ public class CiudadDAOImplTest
 	public void testObtener()
 	{
 		// Siempre declaro los objetos usando la interfaz creada para ello
-		// Ya no es necesario por Spring CiudadDAO ciudadDAO = null;
 		List<Ciudad> lista = null;
 		
 		try
 		{
 			// E inicializo dichos objetos con la implementacion de tal interfaz (Es una buena practica de programacion)
-			// Ya no es necesario por Spring ciudadDAO = new CiudadDAOImpl();
 			lista = ciudadDAO.obtener();
 			// Se considerara correcto el metodo si hay por lo menos un elemento 
 			assertTrue(lista.size() > 0);
@@ -54,16 +49,15 @@ public class CiudadDAOImplTest
 	@Test
 	public void testObtener2()
 	{
-		// Nuevamente, creo los objetos para la prueba
-		// Ya no es necesario por Spring CiudadDAO ciudadDAO = null;
+		// Igualmente, creo un bojeto ciudad para recibir el resultado de la consulta
 		Ciudad ciudad = null;
 		
 		try
 		{
-			// E inicializo dichos objetos
-			// Ya no es necesario por Spring ciudadDAO = new CiudadDAOImpl();
+			// Ahora, realizo la consulta segun una clave primaria como por ejemplo 1
 			ciudad = ciudadDAO.obtener(1L);
-			// Se considerara correcto el metodo retorna algo diferente de nulo
+			
+			// Y se considerara correcto el metodo cuando se retorna algo diferente de nulo
 			assertTrue(ciudad != null);
 		}
 		catch(Excepcion e)
@@ -71,11 +65,31 @@ public class CiudadDAOImplTest
 			fail(e.getMessage()); // En caso de error recupero el mensaje
 		}
 	}
-
+	
+	// Prueba para verificar que la insercion de una ciudad este trabajando correctamente
 	@Test
 	public void testGuardar()
 	{
-		fail("Not yet implemented");
+		// En primer lugar creo un objeto ciudad, el cual transferire a la BD
+		Ciudad ciudad = null;
+		
+		try
+		{
+			// Enseguida se inicializa el objeto ciudad con la informacion que se quiere guardar
+			ciudad = new Ciudad();
+			ciudad.setCodigo(12);
+			ciudad.setNombre("Leticia");
+			ciudad.setCodigoArea("2B");
+			
+			// Y ahora se invoca el metodo que almacena el objeto ciudad en la BD
+			ciudadDAO.guardar(ciudad);
+		}
+		// En caso de error se recoge el error y se da por fallida la prueba
+		catch(Excepcion e)
+		{
+			//e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
 
 }

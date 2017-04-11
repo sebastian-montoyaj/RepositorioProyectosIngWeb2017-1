@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.Set;
 
 /*
- * @author = SebastiÃ¡n Montoya JimÃ©nez
+ * @author = Sebastián Montoya Jiménez
  */
 public class Cliente
 {

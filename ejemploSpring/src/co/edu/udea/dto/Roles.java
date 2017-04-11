@@ -2,7 +2,7 @@
 package co.edu.udea.dto;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class Roles
 {

@@ -12,7 +12,7 @@ import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Ciudad;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class CiudadDAOImplTest
 {
@@ -53,7 +53,7 @@ public class CiudadDAOImplTest
 			// E inicializo dichos objetos
 			ciudadDAO = new CiudadDAOImpl();
 			ciudad = ciudadDAO.obtener(1L);
-			// Se considerara correcto el metodo retorna algo diferente de nulo
+			// Se considerara correcto el metodo cuando retorna algo diferente de nulo
 			assertTrue(ciudad != null);
 		}
 		catch(Excepcion e)
@@ -61,11 +61,35 @@ public class CiudadDAOImplTest
 			fail(e.getMessage()); // En caso de error recupero el mensaje
 		}
 	}
-
+	
+	// Prueba para verificar que la insercion de una ciudad este trabajando correctamente
 	@Test
 	public void testGuardar()
 	{
-		fail("Not yet implemented");
+		// En primer lugar creo un objeto ciudad, el cual transferire a la BD
+		Ciudad ciudad = null;
+		// Despues creo un objeto ciudadDAO y que me permitira llevar el pojo a una tupla de la tabla
+		CiudadDAO ciudadDAO = null;
+		
+		try
+		{
+			// Enseguida se inicializa el objeto ciudad con la informacion que se quiere guardar
+			ciudad = new Ciudad();
+			ciudad.setCodigo(12);
+			ciudad.setNombre("Leticia");
+			ciudad.setCodigoArea("2B");
+			
+			// Luego, se inicializa el objeto ciudadDAO con la implementacion de la misma
+			ciudadDAO = new CiudadDAOImpl();
+			// Y se invoca el metodo que almacena el objeto ciudad
+			ciudadDAO.guardar(ciudad);
+		}
+		// En caso de error se recoge el error y se da por fallida la prueba
+		catch(Excepcion e)
+		{
+			//e.printStackTrace();
+			fail(e.getMessage());
+		}
 	}
 
 }

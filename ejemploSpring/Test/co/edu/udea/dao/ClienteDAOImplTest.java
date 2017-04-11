@@ -3,12 +3,14 @@ package co.edu.udea.dao;
 
 //Importes necesarios para la clase
 import static org.junit.Assert.*;
-
 import java.util.Date;
 import java.util.List;
-
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Cliente;
 import co.edu.udea.dto.Usuario;
@@ -16,20 +18,24 @@ import co.edu.udea.dto.Usuario;
 /*
  * @author = Sebastián Montoya Jiménez
  */
+@RunWith(SpringJUnit4ClassRunner.class) // Con esto le estamos diciendo al Junit que se usara otro runner para las pruebas
+@Transactional // Con esto le indico que esta clase es transaccional
+@ContextConfiguration(locations = "classpath:co/edu/udea/config/SpringConf.xml") // Esto le dice a Spring donde esta el archivo de configuracion
 public class ClienteDAOImplTest
 {
+	@Autowired // Esta anotacion permite la inyeccion de datos desde la BD a esta variable
+	ClienteDAO clienteDAO;
+	
 	// Prueba para verificar que el metodo de obtener todos los clientes este trabajando correctamente
 	@Test
 	public void testObtener()
 	{
-		// En primer lugar, creo los objetos necesarios para la consulta y para recibir el resultado
-		ClienteDAO clienteDAO = null;
+		// En primer lugar, creo un objeto lista de clientes para poder rebicir los resultados de la consulta
 		List<Cliente> resultado = null;
 		
 		try
 		{
-			// Luego, inicializo el objeto clienteDAO e invoco su metodo para obtener todos lo clientes de la BD
-			clienteDAO = new ClienteDAOImpl();
+			// Luego, invoco el metodo para obtener todos lo clientes de la BD
 			resultado = clienteDAO.obtener();
 			
 			// De manera opcional, imprimo el nombre de cada uno de los clientes que pudieron obtenerse de la consulta
@@ -53,9 +59,8 @@ public class ClienteDAOImplTest
 	@Test
 	public void testGuardar()
 	{
-		// En primer lugar, creo los objetos necesarios para la transaccion
+		// En primer lugar, creo los objetos necesarios para crear un nuevo cliente
 		Cliente cliente = null;
-		ClienteDAO clienteDAO = null;
 		Usuario user = null;
 		
 		try
@@ -73,8 +78,7 @@ public class ClienteDAOImplTest
 			cliente.setUsuarioCrea(user);
 			cliente.setFechaCreacion(new Date());
 			
-			// Y termino de inicializar el objeto clienteDAO para poder invocar su metodo de guardado de clientes
-			clienteDAO = new ClienteDAOImpl();
+			// Y por ultimo lo guardo en la BD
 			clienteDAO.guardar(cliente);
 		}
 		// En caso de error recupero el mensaje y la prueba falla

@@ -1,15 +1,15 @@
 /* Clase personalizada para manejar todos los errores que puedan ocurrir en este proyecto*/
 package co.edu.udea.Excepcion;
 
-// Importe necesaruio para la clase
+// Importe necesario para la clase
 import org.apache.log4j.Logger;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class Excepcion extends Exception
 {
-	// Bitacora en donde se registraran los errores
+	// Bitacora en donde se registraran los mensajes de informacion, depuracion y errores
 	Logger log = Logger.getLogger(this.getClass());
 
 	public Excepcion() {

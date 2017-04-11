@@ -1,4 +1,4 @@
-/* Clase que entrega una conexion (sesion) activa con la BD y que aplica el patron de dise√±o singleton*/
+/* Clase que entrega una conexion (sesion) activa con la BD y que aplica el patron de diseÒo singleton*/
 package co.edu.udea.dao;
 
 //Importes necesarios para que esta clase funcione
@@ -9,7 +9,7 @@ import org.hibernate.cfg.Configuration;
 import co.edu.udea.Excepcion.Excepcion;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class DataSource
 {
@@ -24,7 +24,7 @@ public class DataSource
 		
 	}
 	
-	// Metodo con el cual se obtiene o se crea la conexion (sesion) a la base dew datos
+	// Metodo con el cual se obtiene o se crea la conexion (sesion) a la base de datos
 	public Session getSession() throws Excepcion
 	{
 		try
@@ -58,6 +58,7 @@ public class DataSource
 			instancia = new DataSource();
 		}
 		
-		return instancia; // Se retorna la sesion de la BD
+		// Ahora, independiente de si se acabo de iniciar la sesion o esta ya estuviera abierta, simplemente se retorna tal sesion
+		return instancia;
 	}
 }

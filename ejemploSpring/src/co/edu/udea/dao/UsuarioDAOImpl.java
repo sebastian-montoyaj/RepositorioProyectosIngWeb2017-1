@@ -4,16 +4,28 @@ package co.edu.udea.dao;
 //Importes necesarios para la clase
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Usuario;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class UsuarioDAOImpl implements UsuarioDAO
 {
-	// Implementacion de los metodos abstractos
+	// Variable privada que me ayudara a obtener una sesion con la base de datos
+	private SessionFactory sessionFactory;
 	
+	// Metodos getter y setter para establecer la session con la BD
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
+	// Implementacion de los metodos abstractos
 	@Override
 	public Usuario obtener(String login) throws Excepcion
 	{
@@ -25,7 +37,7 @@ public class UsuarioDAOImpl implements UsuarioDAO
 		try
 		{
 			// Se inicia(Obtiene) la sesion
-			session = DataSource.getInstance().getSession();
+			session = sessionFactory.getCurrentSession();
 			user = (Usuario) session.get(Usuario.class, login); // Si no encuentra el usuario se lanza una excepcion
 		}
 		// En caso de error recuperamos la excepcion
@@ -33,13 +45,6 @@ public class UsuarioDAOImpl implements UsuarioDAO
 		{
 			//e.printStackTrace();
 			throw new Excepcion("Error consultando usuario", e);
-		}
-		finally // Por ultimo
-		{
-			if(session != null) // Si la sesion esta abierta
-			{
-				session.close(); // La cierro
-			}
 		}
 		
 		return user; // Y retornamos el usuario que recuperamos de la BD

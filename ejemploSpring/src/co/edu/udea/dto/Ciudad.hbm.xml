@@ -3,16 +3,28 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 16/03/2017 01:20:52 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
+
+	<!-- Mapeo de la tabla ciudades -->
+	<!-- Para la etiqueta class::: name debe ir el pojo y en table se debe escribir el nombre de la tabla de la BD -->
     <class name="co.edu.udea.dto.Ciudad" table="ciudades">
+    
+		<!-- Para las siguientes etiquetas (O sea, id y property) los atributos:
+		id name/property name  ~ Se refieren al nombre de la variable del pojo que se enlazara a una columna de la BD
+		Luego dentro de tales etiquetas:
+		column name ~ Se refiere al nombre propiamente de la columna de la tabla en BD -->
+	
         <id name="codigo" type="long">
             <column name="CODIGO" precision="12"/>
-            <generator class="assigned" />
+            <generator class="assigned" /> <!-- Esto es necesario si la clave es autoincrementable -->
         </id>
+        
         <property name="nombre" type="java.lang.String">
             <column name="NOMBRE" length="50" not-null="true" />
         </property>
+        
         <property name="codigoArea" type="java.lang.String">
             <column name="CODIGOAREA" length="4" not-null="false" />
         </property>
+        
     </class>
 </hibernate-mapping>

@@ -4,26 +4,35 @@ package co.edu.udea.dao;
 //Importes necesarios para la clase
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Usuario;
 
 /*
  * @author = Sebastián Montoya Jiménez
  */
+@RunWith(SpringJUnit4ClassRunner.class) // Con esto le estamos diciendo al Junit que se usara otro runner para las pruebas
+@Transactional // Con esto le indico que esta clase es transaccional
+@ContextConfiguration(locations = "classpath:co/edu/udea/config/SpringConf.xml") // Esto le dice a Spring donde esta el archivo de configuracion
 public class UsuarioDAOImplTest
 {
+	@Autowired // Esta anotacion permite la inyeccion de datos desde la BD a esta variable
+	UsuarioDAO usuarioDAO;
+	
 	// Prueba para verificar que el metodo de obtener un usuario este trabajando correctamente
 	@Test
 	public void testObtener()
 	{
-		// Se crean los objetos necesarios para la prueba
-		UsuarioDAO usuarioDAO = null;
+		// En primer lugar, se crea un objeto usuario para recibir el resultado de la consulta
 		Usuario usuario = null;
 		
 		try
 		{
-			// E inicializo dichos objetos y armo la consulta
-			usuarioDAO = new UsuarioDAOImpl();
+			// Luego, se realiza la consulta y su resultado es llevado a la variable usuario
 			usuario = usuarioDAO.obtener("juan");
 			
 			// Si el resultado de la consulta es diferente de nulo entonces

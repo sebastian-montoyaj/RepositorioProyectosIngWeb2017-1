@@ -7,7 +7,7 @@ import co.edu.udea.Excepcion.Excepcion;
 import java.util.List;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public interface CiudadDAO
 {

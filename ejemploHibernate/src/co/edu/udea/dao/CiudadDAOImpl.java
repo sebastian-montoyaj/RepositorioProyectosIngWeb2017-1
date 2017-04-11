@@ -4,22 +4,21 @@ package co.edu.udea.dao;
 //Importes necesarios para la clase
 import java.util.ArrayList;
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Ciudad;
 import co.edu.udea.dao.DataSource;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class CiudadDAOImpl implements CiudadDAO
 {
 	// Implementacion de los metodos abstractos
+	
 	public List<Ciudad> obtener() throws Excepcion
 	{
 		// Variable con la que vamos a recibir la lista de ciudades
@@ -48,7 +47,7 @@ public class CiudadDAOImpl implements CiudadDAO
 	{
 		// Aqui creamos un objeto ciudad para recibir el resultado de la consulta
 		Ciudad ciudad = new Ciudad();
-		// Variable con la que se establecera la conexion con la BD
+		// Variable con la que se establecera la conexion/sesion con la BD
 		Session session = null;
 		
 		try
@@ -79,16 +78,16 @@ public class CiudadDAOImpl implements CiudadDAO
 	{
 		// Variable de tipo transaccion para poder realizar la inserccion
 		Transaction tx = null;
-		// Variable con la que se establecera la conexion con la BD
+		// Variable con la que se establecera la conexion/sesion con la BD
 		Session session = null;
 		
 		try
 		{
 			// Se inicia la sesion
 			session = DataSource.getInstance().getSession();
-			tx = session.beginTransaction(); // Se da ·πïor iniciada la transaccion
-			session.save(ciudad); // Se guarda la ciudad en la BD
-			tx.commit(); // Y se realiza la confirmacion de la transdaccion
+			tx = session.beginTransaction(); // Se da por iniciada la transaccion
+			session.saveOrUpdate(ciudad); // Se guarda la ciudad en la BD
+			tx.commit(); // Y se realiza la confirmacion de la transaccion
 		}
 		// En caso de error recuperamos la excepcion
 		catch (HibernateException e)

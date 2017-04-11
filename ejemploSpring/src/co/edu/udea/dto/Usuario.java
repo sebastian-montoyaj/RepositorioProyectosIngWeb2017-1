@@ -2,7 +2,7 @@
 package co.edu.udea.dto;
 
 /*
- * @author = Sebasti√°n Montoya Jim√©nez
+ * @author = Sebasti·n Montoya JimÈnez
  */
 public class Usuario
 {
@@ -10,7 +10,7 @@ public class Usuario
 	private String nombres;
 	private String apellidos;
 	private String contrasena;
-	private Roles roles; // Calve foranea que enlaza esta tabla con la tabla roles
+	private Roles roles; // Clave foranea que enlaza esta tabla con la tabla roles
 	
 	public String getLogin()
 	{
