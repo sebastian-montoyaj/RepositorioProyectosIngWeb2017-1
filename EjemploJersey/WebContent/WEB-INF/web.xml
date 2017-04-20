@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>EjemploJersey</display-name>
+  
+  <!-- El siguiente servlet es quien hace respuesta a las peticiones web -->
+  <servlet>
+  	<servlet-name>ServicioSebas</servlet-name> <!-- Nombre o regsitro del servlet -->
+  	<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+  	<!-- Esta etiqueta es para definir los parametros iniciales del servlet -->
+  	<init-param>
+  		<param-name>com.sun.jersey.config.property.packages</param-name>
+  		<param-value>co.edu.udea.ws</param-value>
+  	</init-param>
+  	<!-- Esta etiqueta le dice al servlet que se cargara al inicio y le indico su prioridad -->
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <!-- Esto registra todos los servlet que van a responder -->
+  <servlet-mapping>
+  	<servlet-name>ServicioSebas</servlet-name>
+  	<url-pattern>/jersey/*</url-pattern> <!-- Antes /rest y cualquier cosa es el servlet ServicioSebas quien reponde -->
+  </servlet-mapping>
+  
+</web-app>
