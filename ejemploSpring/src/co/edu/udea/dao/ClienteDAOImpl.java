@@ -13,7 +13,7 @@ import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dto.Cliente;
 
 /*
- * @author = Sebastián Montoya Jiménez
+ * @author = Sebastiï¿½n Montoya Jimï¿½nez
  */
 public class ClienteDAOImpl implements ClienteDAO
 {
@@ -34,7 +34,7 @@ public class ClienteDAOImpl implements ClienteDAO
 	public List<Cliente> obtener() throws Excepcion
 	{
 		// Aqui creamos un objeto lista de Clientes para recibir el resultado de la consulta
-		List<Cliente> clientes = new ArrayList<>();
+		List<Cliente> clientes = new ArrayList();
 		
 		Session session = null; // Variable con la que se establecera la conexion/sesion con la BD
 		Criteria criteria = null; // Variable con que la cual se aramara la consulta a la BD

@@ -5,7 +5,8 @@
   <!-- El siguiente servlet es quien hace respuesta a las peticiones web -->
   <servlet>
   	<servlet-name>ServicioSebas</servlet-name> <!-- Nombre o regsitro del servlet -->
-  	<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+<!--   	<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
+	<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
   	<!-- Esta etiqueta es para definir los parametros iniciales del servlet -->
   	<init-param>
   		<param-name>com.sun.jersey.config.property.packages</param-name>
@@ -20,5 +21,17 @@
   	<servlet-name>ServicioSebas</servlet-name>
   	<url-pattern>/jersey/*</url-pattern> <!-- Antes /rest y cualquier cosa es el servlet ServicioSebas quien reponde -->
   </servlet-mapping>
+  
+  <!-- Se agregan estas anotaciones para manejar el tema de comunicacion con Spring -->
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>
+  		classpath:/co/edu/udea/config/SpringConf.xml
+  	</param-value>
+  </context-param>
   
 </web-app>
