@@ -1,5 +1,7 @@
 package co.edu.udea.bl;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import co.edu.udea.Excepcion.Excepcion;
 import co.edu.udea.dao.UsuarioDAO;
 import co.edu.udea.dto.Usuario;
@@ -8,6 +10,7 @@ import co.edu.udea.dto.Usuario;
  * @author = Sebasti�n Montoya Jim�nez
  */
 // Clase que tendra toda la logica del negocio para los usuarios
+@Transactional // Esto le indica a la clase que las operaciones que se van a hacer son transaccionales contra la BD
 public class UsuarioBL
 {
 	// Variable que permitira enlazar/inyectar la informacion de un UsuarioDAO con esta clase

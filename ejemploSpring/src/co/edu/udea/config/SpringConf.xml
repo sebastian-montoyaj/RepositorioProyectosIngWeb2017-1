@@ -66,6 +66,9 @@
 		<property name="userDAO" ref="usuarioDAO"></property>
 	</bean>
 	
+	<!-- Con este atributo es para decirle a Spring que se van a realizar transacciones y quien -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
 	<!-- Aqui se coloca la ruta en donde estan los servicios web -->
 	<context:component-scan base-package="co.edu.udea.ws"></context:component-scan>
 </beans>
