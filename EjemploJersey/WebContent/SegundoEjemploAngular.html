@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<!-- Cargo angular -->
+<script type="text/javascript" src="resources/js/angular.min.js"></script>
+<!-- Cargo mi doulo personalizado -->
+<!-- Es importante que esto vaya de segundo -->
+<script type="text/javascript" src="resources/js/controladorJS.js"></script>
+
+<body ng-app="miModulo">
+	<div ng-controller="miControlador">
+		<a href="#" ng-click="eliminar()">Eliminar seleccionados</a>
+		<ul>
+			<li ng-repeat="item in lista">
+				<input type="checkbox" ng-model="item.checked"/>
+				<span>{{item.texto}}</span>
+			</li>
+		</ul>
+		
+		<div>
+			<input type="text" ng-model="texto" />
+			<button ng-click="agregar()">Agregar</button>
+		</div>
+	</div>
+</body>
+</html>

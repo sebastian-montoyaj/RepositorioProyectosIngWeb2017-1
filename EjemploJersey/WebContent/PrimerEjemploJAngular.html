@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!-- Cargo angular -->
+<script type="text/javascript" src="resources/js/angular.min.js">
+	
+</script>
+</head>
+<body ng-app> <!-- Cargo la directiva ng-app -->
+
+	<div>
+		Ingrese su nombre:
+		<input type="text" id="nombre" placeholder="Nombre"" ng-model="mensaje"/>
+	</div>
+	<div>
+		Nombre digitado:
+		<div>{{mensaje}}</div>
+	</div>
+</body>
+</html>
