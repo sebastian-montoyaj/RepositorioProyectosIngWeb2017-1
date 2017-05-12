@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/03/2017 01:20:52 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<!-- Mapeo de la tabla usuarios -->
+	<!-- Misma explicacion de los mapeos de Ciudad y cliente -->
+    <class name="co.edu.udea.dto.Usuario" table="usuarios">
+    	
+        <id name="login" type="java.lang.String">
+            <column name="LOGIN" length="15"/>
+        </id>
+        
+        <property name="nombres" type="java.lang.String">
+            <column name="NOMBRES" length="45" not-null="true" />
+        </property>
+        
+        <property name="apellidos" type="java.lang.String">
+            <column name="APELLIDOS" length="45" not-null="true" />
+        </property>
+        
+        <property name="contrasena" type="java.lang.String">
+            <column name="CONTRASENA" length="125" not-null="true" />
+        </property>
+        
+        <many-to-one name="roles" class="co.edu.udea.dto.Roles" lazy="proxy" fetch="join">
+        	<column name="ROL" not-null="true" />
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>

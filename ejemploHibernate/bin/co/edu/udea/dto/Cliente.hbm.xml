@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16/03/2017 01:20:52 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<!-- Mapeo de la tabla clientes -->
+	<!-- Para la etiqueta class::: name debe ir el pojo y en table se debe escribir el nombre de la tabla de la BD -->
+    <class name="co.edu.udea.dto.Cliente" table="clientes">
+    	
+    	<!-- Para las siguientes etiquetas (O sea, id y property) los atributos:
+		id name/property name  ~ Se refieren al nombre de la variable del pojo que se enlazara a una columna de la BD
+		Luego dentro de tales etiquetas:
+		column name ~ Se refiere al nombre propiamente de la columna de la tabla en BD -->
+		
+        <id name="cedula" type="java.lang.String">
+            <column name="CEDULA" length="15"/>
+        </id>
+        
+        <property name="nombres" type="java.lang.String">
+            <column name="NOMBRES" length="30" not-null="true" />
+        </property>
+        
+        <property name="apellidos" type="java.lang.String">
+            <column name="APELLIDOS" length="30" not-null="true" />
+        </property>
+        
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" length="120" not-null="true" />
+        </property>
+        
+        <property name="fechaCreacion" type="java.util.Date">
+            <column name="FECHACREACION" not-null="true" />
+        </property>
+        
+        <property name="fechaModificacion" type="java.util.Date">
+            <column name="FECHAMODIFICACION" not-null="false" />
+        </property>
+        
+        <property name="eliminado" type="java.lang.Boolean">
+            <column name="ELIMINADO" not-null="false" />
+        </property>
+        
+        <property name="fechaEliminacion" type="java.util.Date">
+            <column name="FECHAELIMINACION" not-null="false" />
+        </property>
+        
+		<!-- En caso que se tengan claves foraneas se usa la etiqueta many-to-one donde:
+		name  ~ Se refiere al nombre de la variable del pojo que se quiere enlazar
+		class ~ debe ir el pojo de la otra tabla
+		Y ya dentro en la etiqueta column se debe especificar el campo de la BD
+		
+		Por otro lado, lazy es para indicar si se usara o no la cache de resultados
+		Esto con el proposito de reducir la carga de trabajo del motor de base de datos.
+		
+		Y fecth es para indicar si la consulta de la clave foranea con la BD se realizara con un join o un select -->
+        
+        <many-to-one name="usuarioCrea" class="co.edu.udea.dto.Usuario" lazy="proxy" fetch="join">
+        	<column name="USUARIOCREA" not-null="false" />
+        </many-to-one>
+        
+        <many-to-one name="usuarioModifica" class="co.edu.udea.dto.Usuario" lazy="proxy" fetch="join">
+        	<column name="USUARIOMODIFICA" not-null="false" />
+        </many-to-one>
+        
+        <many-to-one name="usuarioElimina" class="co.edu.udea.dto.Usuario" lazy="proxy" fetch="join">
+        	<column name="USUARIOELIMINA" not-null="false" />
+        </many-to-one>
+        
+        <!-- En el caso contrario, osea que la clave primaria de esta tabla sea usada como foranea en otras
+        entonces, name se referira al atributo del pojo creado para la otra tabla
+                  column sera la variable a la cual apuntara
+                  y one-to-many debe apuntar al otro pojo objetivo -->
+        
+        <set name="direcciones">
+        	<key column="cliente"/>
+        	<one-to-many class="co.edu.udea.dto.Direccion"/>
+        </set>
+        
+    </class>
+</hibernate-mapping>

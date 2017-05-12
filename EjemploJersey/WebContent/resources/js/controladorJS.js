@@ -1,7 +1,7 @@
 /**
- * 
+ * author: Sebastian Montoya Jimenez
+ * Modulo de control creado para la pagina: SegundoEjemploAngular.html
  */
-// Asi se crea un modulo en angular
 var modulo = angular.module('miModulo', []);
 
 modulo.controller('miControlador',['$scope', 

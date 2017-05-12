@@ -1,7 +1,7 @@
 /**
- * 
+ * author: Sebastian Montoya Jimenez
+ * Modulo de control para el formulario de la pagina: Cuestionario.html
  */
-
 var cuestionario  =  angular.module('modCuestionario', []);
 
 cuestionario.controller('contCuestionario', function($scope){
@@ -43,8 +43,8 @@ cuestionario.controller('contCuestionario', function($scope){
 			pregunta.estado = 'ok';
 		}
 		else{
-			if(pregunta.estado == 'ok' && $scope.respuestasCorrectas > 0)
-				$scope.respuestasCorrectas--;
+//			if(pregunta.estado == 'ok' && $scope.respuestasCorrectas > 0)
+//				$scope.respuestasCorrectas--;
 			
 			pregunta.estado = 'error';
 		}
@@ -52,6 +52,7 @@ cuestionario.controller('contCuestionario', function($scope){
 		estadoUsuario();
 	};
 	
+	// Funcion que se encargara de evaular las respuestas del usuario ~ Tarea del 11 de Mayo
 	$scope.obtenerCalificacion = function() {
 		$scope.respuestasCorrectas = 0;
 		for (i=0; i < $scope.preguntas.length; i++){
