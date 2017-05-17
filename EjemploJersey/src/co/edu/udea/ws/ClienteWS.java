@@ -47,7 +47,7 @@ public class ClienteWS
 	}
 	
 	@GET // Con esta anotacion anoto/registro a que metodo va a responder
-	@Produces(MediaType.APPLICATION_XML) // Con esta otra le digo que va a entregar, en este caso un xml
+	@Produces(MediaType.APPLICATION_JSON) // Con esta otra le digo que va a entregar, en este caso un xml
 	 public List<ClienteJersey> obtener() throws RemoteException
 	 {
 		// Ahora, creo una lista vacia de clientes para recibir el resultado de la consulta
