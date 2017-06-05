@@ -1,10 +1,9 @@
 /**
  * 
  */
+var appCliente = angular.module('clientes', ['ngRoute', 'ngCookies']);
 
-var appCliente = angular.module('clientes', ['ngRoute']);
-
-appCliente.service('usuarios', function($http){
+appCliente.service('usuarios', function($http, $cookies, $location){
 	
     this.autenticar = function(usuario, passwd){
         return $http({
@@ -13,6 +12,17 @@ appCliente.service('usuarios', function($http){
             params: {login: usuario, pws: passwd}
         })
     }
+    
+    this.validarEstado = function(){
+		if(typeof($cookies.nombreUsuario) == 'undefined' || $cookies.nombreUsuario == ""){
+			$location.url("/");
+			return false;
+		}
+		
+		if($location.url() == '/'){
+			
+		}
+	};
 });
 
 appCliente.service('clientes', function($http){
@@ -38,33 +48,47 @@ appCliente.service('clientes', function($http){
     }
 });
 
-appCliente.controller('listaClientes', function($scope, $location, clientes){
-	
-	clientes.listaClientes().then(
-		function success(res){
-			console.log(res);
-			$scope.listaClientes = res.data.clienteJersey;
-		}	
-	)
-	
-	$scope.agregar = function(){
-        $location.url('/nuevo');
-    };
+appCliente.controller('listaClientes', function($scope, $location, clientes, usuarios){
+	if (usuarios.validarEstado())
+	{
+		clientes.listaClientes().then(
+				function success(res){
+					console.log(res);
+					$scope.listaClientes = res.data.clienteJersey;
+				}	
+			)
+			
+			$scope.agregar = function(){
+				$location.url('/nuevo');
+			}
+	}
 });
 
-appCliente.controller('Login', function($scope, $location, usuarios){
+// http://localhost:8080/EjemploJersey/#!/
+
+appCliente.controller('Login', function($scope, $location, $cookies, usuarios){
     $scope.nombreUsuario = '';
     $scope.passwd = '';
    
     $scope.login = function(){
         usuarios.autenticar($scope.nombreUsuario, $scope.passwd).then(
-                function success(data){
-                    $location.url('/listaClientes');
-                },
-               
-                function failure(data){
-                    alert(data.data);
-                }
+        		function success(data){
+					
+					if(data.data != ""){
+						alert(data.data);
+						$scope.nombreUsuario = '';
+						$scope.passwd = '';
+						return;
+					}
+					
+					$cookies.nombreUsuario = $scope.nombreUsuario;
+					
+					$location.url('/listaClientes');
+				},
+				
+				function failure(data){
+					alert(data.data);
+				}
             );
     }
 });
@@ -107,3 +131,10 @@ appCliente.config(['$routeProvider', function($routeProvider){
         controller: 'cliente'
     });
 }]);
+
+appCliente.run($rootScope, usuarios)
+{
+    $rootScope.$on('$routeChangeStart', function(){
+        usuarios.validarEstado();
+    })
+};
