@@ -8,8 +8,11 @@
 		<tr ng-repeat="cliente in listaClientes">
 			<td>{{cliente.cedula}}</td>
 			<td>{{cliente.nombres}} {{cliente.apellidos}}</td>
-			<td>{{cliente.cedula}}</td>
+			<td>{{cliente.correo}}</td>
 		</tr>
 		
 	</table>
+	<div>
+		<button ng-click="agregar()">Nuevo</button>
+	</div>
 </div>

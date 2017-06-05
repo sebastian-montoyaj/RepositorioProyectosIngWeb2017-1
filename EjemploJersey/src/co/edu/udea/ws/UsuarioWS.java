@@ -42,11 +42,13 @@ public class UsuarioWS
 		// Si paso aqui es porque la consulta no tuvo problemas por lo que si la validacion es exitosa entonces
 		if (resul)
 		{
+			System.out.println("Correcto");
 			// Retorno un mensaje apropiado
 			return "Correcto";
 		}
 		
 		// Sino entonces tambien retorno un mensaje apropiado
+		System.out.println("Incorrecto");
 		return "Incorrecto";
 	}
 	// Ejemplo: http://localhost:8080/EjemploJersey/jersey/Usuario?login=elver&pws=1g0/KkFdhrmg1DYJWFdd2A==
